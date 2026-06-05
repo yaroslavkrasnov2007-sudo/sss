@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cube Engine | 3D Game Engine</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="[https://cdn.tailwindcss.com](https://cdn.tailwindcss.com)"></script>
+    
+    <!-- ВНИМАНИЕ: Если вы вынесли CSS в отдельный файл, раскомментируйте строку ниже: -->
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <style>
+        /* Сюда можно вставить код из Части 1, если вы используете один файл */
+    </style>
+</head>
+<body>
+
+    <!-- Навигация -->
+    <header class="nav-3d py-4">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="text-2xl font-black tracking-widest flex items-center gap-3">
+                <div class="w-8 h-8 bg-gradient-to-br from-cyan-400 to-purple-600 rounded shadow-[0_0_15px_rgba(0,240,255,0.5)] transform rotate-12"></div>
+                <span class="gradient-text-3d">CUBE ENGINE</span>
+            </div>
+            <nav class="flex space-x-2 overflow-x-auto w-full md:w-auto pb-2 md:pb-0">
+                <button class="nav-btn active" onclick="switchPage('page-home')">Главная</button>
+                <button class="nav-btn" onclick="switchPage('page-arch')">Архитектура</button>
+                <button class="nav-btn" onclick="switchPage('page-graphics')">Графика</button>
+                <button class="nav-btn" onclick="switchPage('page-results')">UI & Итоги</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-12 perspective-grid flex-grow">
+
+        <!-- ================= СТРАНИЦА 1: ГЛАВНАЯ ================= -->
+        <section id="page-home" class="page-section active">
+            <div class="flex flex-col lg:flex-row items-center gap-12 mb-20">
+                <div class="lg:w-1/2 card-content-pop">
+                    <div class="inline-block px-5 py-2 rounded-lg bg-slate-800 border border-slate-600 shadow-lg mb-6">
+                        <span class="text-cyan-400 font-bold tracking-widest text-sm">ВКР 2026 | МОСКВА</span>
+                    </div>
+                    <h1 class="text-5xl lg:text-7xl font-black mb-6 leading-tight" style="text-shadow: 0 10px 20px rgba(0,0,0,0.8);">
+                        РАЗРАБОТКА <br>
+                        <span class="gradient-text-3d text-6xl lg:text-8xl">3D ДВИЖКА</span>
+                    </h1>
+                    <p class="text-xl text-gray-400 mb-8 max-w-lg border-l-4 border-purple-500 pl-4 shadow-sm">
+                        Легковесный инструмент для образовательных и научных целей. Баланс между производительностью C++ и простотой интеграции.
+                    </p>
+                    
+                    <div class="flex gap-6 mt-8">
+                        <div class="card-3d p-4 w-1/2">
+                            <p class="text-xs text-cyan-400 mb-1">Исполнитель</p>
+                            <p class="font-bold text-lg text-white">Краснов Я.М.</p>
+                        </div>
+                        <div class="card-3d p-4 w-1/2">
+                            <p class="text-xs text-purple-400 mb-1">Руководитель</p>
+                            <p class="font-bold text-lg text-white">Сальмянова А.С.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lg:w-1/2 w-full">
+                    <div class="img-3d-wrapper aspect-[4/3] transform hover:rotate-y-12">
+                        <img src="[https://media.easy-peasy.ai/aaa4dc35-316e-4d9b-a7c5-f5113287f8ce/6cc15754-9bef-4f5f-81ef-6b1c6c2329ca_medium.webp](https://media.easy-peasy.ai/aaa4dc35-316e-4d9b-a7c5-f5113287f8ce/6cc15754-9bef-4f5f-81ef-6b1c6c2329ca_medium.webp)" alt="Cube Engine Abstract" class="object-cover">
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-10">
+                <div class="card-3d">
+                    <div class="card-bg-glow"></div>
+                    <div class="card-content-pop">
+                        <div class="img-3d-wrapper h-48 mb-6">
+                            <img src="[https://media.istockphoto.com/id/947376852/photo/abstract-of-architecture-space-with-white-sphere-ball-are-falling-from-sky-to-the-ground-with.jpg?s=1024x1024&w=is&k=20&c=n_fHwl7OfZfAxvth_HTDgn8biL8bIXpl4omqmoFFIFM=](https://media.istockphoto.com/id/947376852/photo/abstract-of-architecture-space-with-white-sphere-ball-are-falling-from-sky-to-the-ground-with.jpg?s=1024x1024&w=is&k=20&c=n_fHwl7OfZfAxvth_HTDgn8biL8bIXpl4omqmoFFIFM=)" alt="3D Space">
+                        </div>
+                        <h2 class="text-2xl font-bold text-white mb-4 text-glow">Что такое движок?</h2>
+                        <p class="text-gray-400">
+                            Программное обеспечение, обеспечивающее базовые технологии для создания видеоигр: графику, звук, физику и скриптинг. Предоставляет абстракцию над низкоуровневым кодом.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="card-3d">
+                    <div class="card-bg-glow"></div>
+                    <div class="card-content-pop">
+                        <div class="img-3d-wrapper h-48 mb-6">
+                            <img src="[https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=1000](https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=1000)" alt="Tech Abstract">
+                        </div>
+                        <h2 class="text-2xl font-bold text-white mb-4 text-glow">Актуальность</h2>
+                        <p class="text-gray-400">
+                            В отличие от перегруженных гигантов (Unreal/Unity), Cube Engine идеален для изучения работы систем рендеринга и сборки небольших 3D-приложений без излишнего overhead'а.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- [ВСТАВИТЬ КОД ИЗ ЧАСТИ 3 ЗДЕСЬ] -->
+
+        <!-- ================= СТРАНИЦА 3: ГРАФИКА ================= -->
+        <section id="page-graphics" class="page-section">
+            <h1 class="text-4xl md:text-5xl font-black mb-12 text-center text-glow">ГРАФИЧЕСКИЙ КОНВЕЙЕР</h1>
+
+            <div class="grid lg:grid-cols-2 gap-12 mb-12">
+                <div class="card-3d flex flex-col justify-center">
+                    <div class="card-content-pop">
+                        <h2 class="text-3xl font-bold text-cyan-400 mb-6">DirectX 11 API</h2>
+                        <p class="text-gray-300 text-lg mb-6 shadow-sm">
+                            Баланс мощности и контроля. Поддержка HLSL 5.0 для расчета сложного освещения и PBR материалов.
+                        </p>
+                        
+                        <div class="space-y-4">
+                            <div class="bg-black/40 p-4 rounded-lg border border-cyan-500/30">
+                                <strong class="text-white">Vertex Shader:</strong> <span class="text-gray-400">Расчет Model-View-Projection.</span>
+                            </div>
+                            <div class="bg-black/40 p-4 rounded-lg border border-purple-500/30">
+                                <strong class="text-white">Pixel Shader:</strong> <span class="text-gray-400">Свет, текстуры, карты нормалей.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-3d p-2">
+                    <div class="card-content-pop h-full">
+                        <div class="img-3d-wrapper h-full bg-slate-100 min-h-[350px]">
+                            <img src="[https://docs.unity3d.com/es/2019.4/uploads/Main/BestPracticeLightingPipeline3.svg](https://docs.unity3d.com/es/2019.4/uploads/Main/BestPracticeLightingPipeline3.svg)" alt="Lighting Pipeline" class="p-4 mix-blend-multiply">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-3d">
+                <div class="card-content-pop text-center">
+                    <h2 class="text-3xl font-bold text-white mb-8">Управление Ассетами</h2>
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div class="bg-slate-900/80 p-6 rounded-xl border border-white/5 shadow-2xl">
+                            <h3 class="text-xl font-bold text-purple-400 mb-2">3D Модели (OBJ/FBX)</h3>
+                            <p class="text-sm text-gray-400">Автоматический парсинг геометрии и генерация буферов (VBO/IBO) для быстрой отрисовки на GPU.</p>
+                        </div>
+                        <div class="bg-slate-900/80 p-6 rounded-xl border border-white/5 shadow-2xl">
+                            <h3 class="text-xl font-bold text-cyan-400 mb-2">Сериализация сцены</h3>
+                            <p class="text-sm text-gray-400">Запись позиций, поворотов и компонентов всех объектов сцены в JSON/XML для сохранения прогресса.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- [ВСТАВИТЬ КОД ИЗ ЧАСТИ 4 ЗДЕСЬ] -->
+
+    </main>
+
+    <footer class="mt-20 border-t border-white/10 bg-black/80 py-8 text-center text-gray-500 text-sm shadow-[0_-10px_20px_rgba(0,0,0,0.5)]">
+        <p>© 2026 Краснов Я.М. | Cube Engine Project</p>
+    </footer>
+
+    <!-- Скрипт SPA-навигации -->
+    <script>
+        function switchPage(pageId) {
+            const pages = document.querySelectorAll('.page-section');
+            pages.forEach(page => {
+                page.classList.remove('active');
+            });
+
+            const targetPage = document.getElementById(pageId);
+            if (targetPage) {
+                setTimeout(() => {
+                    targetPage.classList.add('active');
+                }, 10);
+            }
+
+            const buttons = document.querySelectorAll('.nav-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            if(event && event.currentTarget) {
+                event.currentTarget.classList.add('active');
+            }
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>

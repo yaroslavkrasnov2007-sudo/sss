@@ -1,0 +1,183 @@
+/* Цветовая палитра и переменные */
+:root {
+    --bg-dark: #050914;
+    --primary: #00f0ff;
+    --secondary: #7000ff;
+    --accent: #ff0055;
+    --card-bg: rgba(16, 23, 42, 0.75);
+    --card-border: rgba(255, 255, 255, 0.1);
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: #e2e8f0;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    margin: 0;
+    overflow-x: hidden;
+    /* Объемный фон-сетка */
+    background-image: 
+        linear-gradient(rgba(0, 240, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 240, 255, 0.03) 1px, transparent 1px),
+        radial-gradient(circle at 50% 0%, rgba(112, 0, 255, 0.15), transparent 40%);
+    background-size: 40px 40px, 40px 40px, 100% 100%;
+    background-attachment: fixed;
+}
+
+/* Навигация (Стеклянный объем) */
+.nav-3d {
+    background: rgba(5, 9, 20, 0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--card-border);
+    box-shadow: 0 10px 30px -10px rgba(0,0,0,0.8), inset 0 -1px 0 rgba(0, 240, 255, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-btn {
+    color: #94a3b8;
+    padding: 0.5rem 1.5rem;
+    border-radius: 0.5rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    font-weight: 600;
+}
+
+.nav-btn::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 50%; transform: translateX(-50%);
+    width: 0; height: 3px;
+    background: var(--primary);
+    transition: width 0.3s ease;
+    box-shadow: 0 0 10px var(--primary);
+}
+
+.nav-btn:hover::before, .nav-btn.active::before {
+    width: 80%;
+}
+
+.nav-btn.active {
+    color: #fff;
+    text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+    background: rgba(0, 240, 255, 0.05);
+}
+
+/* SPA Логика */
+.page-section {
+    display: none;
+    opacity: 0;
+}
+
+.page-section.active {
+    display: block;
+    animation: popIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes popIn {
+    0% { opacity: 0; transform: scale(0.95) translateY(20px) rotateX(10deg); }
+    100% { opacity: 1; transform: scale(1) translateY(0) rotateX(0deg); }
+}
+
+/* === 3D КАРТОЧКИ (МАКСИМУМ ОБЪЕМА) === */
+.perspective-grid {
+    perspective: 1200px;
+}
+
+.card-3d {
+    background: linear-gradient(145deg, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.9));
+    border-radius: 1.5rem;
+    padding: 2rem;
+    border: 1px solid var(--card-border);
+    /* Сложная многоуровневая тень для объема */
+    box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.7),
+        0 0 20px rgba(0, 0, 0, 0.5) inset,
+        0 1px 1px rgba(255, 255, 255, 0.2) inset;
+    transform-style: preserve-3d;
+    transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.5s ease;
+    position: relative;
+}
+
+.card-3d:hover {
+    transform: translateY(-10px) rotateX(5deg) rotateY(-5deg);
+    box-shadow: 
+        30px 40px 50px rgba(0, 0, 0, 0.8),
+        -10px -10px 30px rgba(0, 240, 255, 0.1),
+        0 0 20px rgba(0, 0, 0, 0.5) inset,
+        0 1px 1px rgba(255, 255, 255, 0.3) inset;
+    border-color: rgba(0, 240, 255, 0.3);
+    z-index: 10;
+}
+
+/* Выпирающие элементы внутри карточки */
+.card-content-pop {
+    transform: translateZ(40px); /* Текст и картинки выпирают вперед */
+}
+
+.card-bg-glow {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 0%, rgba(0, 240, 255, 0.1), transparent 70%);
+    border-radius: inherit;
+    transform: translateZ(0);
+    pointer-events: none;
+}
+
+/* Объемные Изображения */
+.img-3d-wrapper {
+    position: relative;
+    border-radius: 1rem;
+    transform-style: preserve-3d;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+    border: 2px solid rgba(255,255,255,0.05);
+    transition: transform 0.6s ease;
+    overflow: hidden;
+    background: #000;
+}
+
+.img-3d-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease, filter 0.6s ease;
+    filter: brightness(0.85) contrast(1.1);
+}
+
+.img-3d-wrapper:hover img {
+    transform: scale(1.08);
+    filter: brightness(1.1) contrast(1.2);
+}
+
+.img-3d-wrapper::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+/* Текст */
+.text-glow {
+    color: #fff;
+    text-shadow: 0 0 15px rgba(0, 240, 255, 0.6);
+}
+
+.gradient-text-3d {
+    background: linear-gradient(to bottom right, #fff, #00f0ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.5));
+}
+
+/* Декоративные левитирующие кубы (CSS) */
+.cube-wireframe {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    border: 2px solid rgba(0, 240, 255, 0.1);
+    transform: rotateX(45deg) rotateY(45deg);
+    z-index: -1;
+    box-shadow: 0 0 30px rgba(0, 240, 255, 0.05) inset;
+}
